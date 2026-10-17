@@ -1,0 +1,110 @@
+[
+  {
+    "method": "GET",
+    "path": "/api/v1/employee/get-cpf-by-contract",
+    "service": "pessoas",
+    "auth": "authenticated",
+    "safe": true,
+    "handler": "EmployeeController#getCpfByContract",
+    "pathVariables": [],
+    "queryParams": [
+      {
+        "name": "contract",
+        "type": "Long",
+        "required": true
+      }
+    ],
+    "headers": [],
+    "body": null
+  },
+  {
+    "method": "GET",
+    "path": "/api/v1/employee/get-person-id-by-email",
+    "service": "pessoas",
+    "auth": "authenticated",
+    "safe": true,
+    "handler": "EmployeeController#getPersonIdByEmail",
+    "pathVariables": [],
+    "queryParams": [
+      {
+        "name": "email",
+        "type": "String",
+        "required": true
+      }
+    ],
+    "headers": [],
+    "body": null
+  },
+  {
+    "method": "GET",
+    "path": "/api/v1/employee/get-person-name-by-cpf",
+    "service": "pessoas",
+    "auth": "authenticated",
+    "safe": true,
+    "handler": "EmployeeController#getPersonByCPF",
+    "pathVariables": [],
+    "queryParams": [
+      {
+        "name": "txId",
+        "type": "String",
+        "required": true
+      }
+    ],
+    "headers": [],
+    "body": null
+  },
+  {
+    "method": "GET",
+    "path": "/api/v1/employee/get-user-by-token",
+    "service": "pessoas",
+    "auth": "authenticated",
+    "safe": true,
+    "handler": "EmployeeController#getUserByToken",
+    "pathVariables": [],
+    "queryParams": [],
+    "headers": [],
+    "body": null
+  },
+  {
+    "method": "GET",
+    "path": "/api/v1/employee/is-corporativo",
+    "service": "pessoas",
+    "auth": "authenticated",
+    "safe": true,
+    "handler": "EmployeeController#isCorporativo",
+    "pathVariables": [],
+    "queryParams": [
+      {
+        "name": "txId",
+        "type": "String",
+        "required": true
+      }
+    ],
+    "headers": [],
+    "body": null
+  },
+  {
+    "method": "GET",
+    "path": "/api/v1/qr-code/gerar",
+    "service": "pessoas",
+    "auth": "authenticated",
+    "safe": true,
+    "handler": "QrCodeController#executar",
+    "pathVariables": [],
+    "queryParams": [],
+    "headers": [],
+    "body": "QrCodeInputDTO"
+  },
+  {
+    "method": "POST",
+    "path": "/api/v1/qr-code/recuperar",
+    "service": "pessoas",
+    "auth": "authenticated",
+    "safe": true,
+    "handler": "QrCodeController#recuperarQrCode",
+    "pathVariables": [],
+    "queryParams": [],
+    "headers": [],
+    "body": "QrCodeInputDTO"
+  }
+]
