@@ -4,7 +4,7 @@ import br.com.sebratel.pessoas.dto.ApiResponse;
 import br.com.sebratel.pessoas.dto.CorporativoOutputDTO;
 import br.com.sebratel.pessoas.model.Employee;
 import br.com.sebratel.pessoas.service.EmployeeService;
-import br.com.sebratel.pessoas.utils.JwtInformation;
+import br.com.sebratel.pessoas.utils.CallerIdentity;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import lombok.extern.slf4j.Slf4j;
@@ -32,7 +32,7 @@ public class EmployeeController {
         return ApiResponse.<Employee>builder()
                 .message("Sucesso")
                 .success(true)
-                .data(JwtInformation.retrieveUserData())
+                .data(CallerIdentity.retrieveUserData())
                 .build();
     }
 
