@@ -1,0 +1,79 @@
+package br.com.sebratel.pessoas.controller;
+
+import br.com.sebratel.pessoas.dto.ApiResponse;
+import br.com.sebratel.pessoas.dto.CorporativoOutputDTO;
+import br.com.sebratel.pessoas.model.Employee;
+import br.com.sebratel.pessoas.service.EmployeeService;
+import br.com.sebratel.pessoas.utils.JwtInformation;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping("/api/v1/employee")
+@Slf4j
+public class EmployeeController {
+
+    private final EmployeeService employeeService;
+
+    @Autowired
+    public EmployeeController(EmployeeService employeeService) {
+        this.employeeService = employeeService;
+    }
+
+    @GetMapping("/get-user-by-token")
+    ApiResponse<Employee> getUserByToken() {
+        log.info("Recebida requisição para obter informações do usuário pelo token.");
+        return ApiResponse.<Employee>builder()
+                .message("Sucesso")
+                .success(true)
+                .data(JwtInformation.retrieveUserData())
+                .build();
+    }
+
+    @GetMapping("/get-person-id-by-email")
+    ApiResponse<Long> getPersonIdByEmail(@RequestParam @Valid @NotNull String email) {
+        log.info("Recebida requisição para obter PersonId pelo email: {}", email);
+        return ApiResponse.<Long>builder()
+                .success(true)
+                .message("Sucesso")
+                .data(employeeService.getPersonIdByEmail(email))
+                .build();
+    }
+
+    @GetMapping("/get-person-name-by-cpf")
+    ApiResponse<String> getPersonByCPF(@RequestParam @Valid @NotNull String txId) {
+        log.info("Recebida requisição para obter Person pelo cpf: {}", txId);
+        return ApiResponse.<String>builder()
+                .success(true)
+                .message("Sucesso")
+                .data(employeeService.getPersonByCPF(txId))
+                .build();
+    }
+
+    @GetMapping("/get-cpf-by-contract")
+    ApiResponse<String> getCpfByContract(@RequestParam @Valid @NotNull Long contract) {
+        log.info("Recebida requisição para obter Person pelo cpf: {}", contract);
+        return ApiResponse.<String>builder()
+                .success(true)
+                .message("Sucesso")
+                .data(employeeService.getTxIdByContract(contract))
+                .build();
+    }
+
+    @GetMapping("/is-corporativo")
+    ApiResponse<CorporativoOutputDTO> isCorporativo(@RequestParam @Valid @NotNull String txId) {
+        log.info("Recebida requisição para verificar se o cliente é corporativo pelo cpf/cnpj: {}", txId);
+        return ApiResponse.<CorporativoOutputDTO>builder()
+                .success(true)
+                .message("Sucesso")
+                .data(employeeService.getCorporativoByTxId(txId))
+                .build();
+    }
+
+}

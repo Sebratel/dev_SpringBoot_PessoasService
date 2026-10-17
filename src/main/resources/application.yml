@@ -12,11 +12,15 @@ spring:
   mvc:
     async:
       request-timeout: 600000
-  # Esqueleto: removido quando os repositorios do dominio forem movidos (specs/API_GATEWAY_PASSOS.md, fase 3).
-  autoconfigure:
-    exclude:
-      - org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
-      - org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration
+  datasource:
+    erp:
+      url: ${ERP_DB_URL}
+      username: ${ERP_DB_USER}
+      password: ${ERP_DB_PASS}
+      driver-class-name: org.postgresql.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: ${SHOW_SQL:false}
 
 server:
   port: ${SERVER_PORT:8106}
