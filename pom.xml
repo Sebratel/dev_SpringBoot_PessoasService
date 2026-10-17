@@ -11,7 +11,7 @@
     <artifactId>pessoas-service</artifactId>
     <version>0.1.0-SNAPSHOT</version>
     <name>pessoas-service</name>
-    <description>Colaboradores e identidade: consulta de pessoa por token/email/CPF/contrato, corporativo e QR Code do funcionario</description>
+    <description>Colaboradores e identidade: consulta de pessoa por token/email/CPF/contrato e corporativo</description>
 
     <!--
       O sebratel-java-parent e o sebratel-build-rules (plugin do Checkstyle) vem do GitHub Packages (o Maven exige token `read:packages` até para pacotes públicos).
@@ -31,7 +31,6 @@
     </pluginRepositories>
 
     <properties>
-        <zxing.version>3.5.3</zxing.version>
     </properties>
 
     <dependencies>
@@ -59,16 +58,6 @@
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
             <scope>runtime</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.google.zxing</groupId>
-            <artifactId>core</artifactId>
-            <version>${zxing.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.google.zxing</groupId>
-            <artifactId>javase</artifactId>
-            <version>${zxing.version}</version>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>

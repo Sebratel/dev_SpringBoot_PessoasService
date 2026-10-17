@@ -1,6 +1,6 @@
 # dev_SpringBoot_PessoasService
 
-Colaboradores, identidade e QR Code do funcionário.
+Colaboradores e identidade do usuário.
 
 Parte da migração do BFF para API Gateway (`Sebratel/dev_SpringBoot_APIGateway`, `specs/API_GATEWAY.md`).
 Serviço **pessoas-service**, porta **8106**, atrás do `dev_SpringBoot_Gateway`.
@@ -17,8 +17,6 @@ Serviço **pessoas-service**, porta **8106**, atrás do `dev_SpringBoot_Gateway`
 | `GET` | `/api/v1/employee/get-person-name-by-cpf` | autenticada |
 | `GET` | `/api/v1/employee/get-user-by-token` | autenticada |
 | `GET` | `/api/v1/employee/is-corporativo` | autenticada |
-| `GET` | `/api/v1/qr-code/gerar` | autenticada |
-| `POST` | `/api/v1/qr-code/recuperar` | autenticada |
 
 ## Desenvolvimento
 
