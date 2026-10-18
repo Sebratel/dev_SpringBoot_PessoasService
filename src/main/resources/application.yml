@@ -26,3 +26,8 @@ management:
     web:
       exposure:
         include: health,info
+
+# O API Gateway manda traceparent e X-Request-Id; o CorrelationFilter os poe no log: [traceId,requestId].
+logging:
+  pattern:
+    level: "%5p [%X{traceId:-},%X{requestId:-}]"
