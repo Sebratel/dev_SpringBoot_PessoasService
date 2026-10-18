@@ -25,7 +25,14 @@ management:
   endpoints:
     web:
       exposure:
-        include: health,info
+        # prometheus: o servico so aceita chamadas da rede privada (gateway e Prometheus)
+        include: health,info,prometheus
+  metrics:
+    tags:
+      application: pessoas-service
+    distribution:
+      percentiles-histogram:
+        http.server.requests: true
 
 # O API Gateway manda traceparent e X-Request-Id; o CorrelationFilter os poe no log: [traceId,requestId].
 logging:
